@@ -2,6 +2,7 @@
 using Newtonsoft.Json;
 using System;
 using System.Net.Http.Headers;
+using System.Reflection.Metadata;
 using System.Text;
 using static System.Net.WebRequestMethods;
 
@@ -28,12 +29,12 @@ namespace CRUDClientes.Servicios
             if (response.IsSuccessStatusCode)
             {
                 var json_respuesta = await response.Content.ReadAsStringAsync();
-                json_respuesta = json_respuesta.Replace("[", "");
-                json_respuesta = json_respuesta.Replace("]", "");
+                //json_respuesta = json_respuesta.Replace("[", "");
+                //json_respuesta = json_respuesta.Replace("]", "");
 
-                var resultado = JsonConvert.DeserializeObject<Clientes>(json_respuesta);
+                var resultado = JsonConvert.DeserializeObject<List<Clientes>>(json_respuesta);
 
-                lista = resultado.ListaClientes;
+                lista = resultado;
             }
             return lista;
 
@@ -51,9 +52,9 @@ namespace CRUDClientes.Servicios
             {
                 var json_respuesta = await response.Content.ReadAsStringAsync();
                 var resultado = JsonConvert.DeserializeObject<Clientes>(json_respuesta);
-                json_respuesta = json_respuesta.Replace("[", "");
-                json_respuesta = json_respuesta.Replace("]", "");
-                objCliente = resultado.ObjetoClientes;
+                //json_respuesta = json_respuesta.Replace("[", "");
+                //json_respuesta = json_respuesta.Replace("]", "");
+                objCliente = resultado;
                 
             }
             return objCliente;

@@ -14,7 +14,7 @@
 
         public byte[]? Fotografia { get; set; }
 
-        public List<Clientes>? ListaClientes { get; set; }
+        public List<Clientes> ListaClientes { get; set; }
         public Clientes? ObjetoClientes { get; set; }
     }
 }
